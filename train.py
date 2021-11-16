@@ -93,7 +93,7 @@ if __name__ == "__main__":
         ModelCheckpoint(model_path),
         CSVLogger("/content/drive/MyDrive/files/data.csv"),
         TensorBoard(),
-        reduce_lr = ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=5, min_lr=1e-6, verbose=1),
+        ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=5, min_lr=1e-6, verbose=1),
         EarlyStopping(monitor='val_loss', patience=50, restore_best_weights=False)
     ]  
 
