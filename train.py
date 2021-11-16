@@ -91,7 +91,6 @@ if __name__ == "__main__":
 
     callbacks = [
         ModelCheckpoint(model_path),
-        ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=20),
         CSVLogger("/content/drive/MyDrive/files/data.csv"),
         TensorBoard(),
         reduce_lr = ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=5, min_lr=1e-6, verbose=1),
