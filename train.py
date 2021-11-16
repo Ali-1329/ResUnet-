@@ -82,7 +82,7 @@ if __name__ == "__main__":
 
     #model=build_model()
 
-    metrics=[dice_coef,iou,Recall(),Precision()]
+    metrics=[Recall(), Precision(), dice_coef, MeanIoU(num_classes=2)]
 
     train_dataset = tf_dataset(train_x, train_y, batch=batch_size)
     valid_dataset = tf_dataset(valid_x, valid_y, batch=batch_size)
@@ -94,6 +94,7 @@ if __name__ == "__main__":
         ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=20),
         CSVLogger("/content/drive/MyDrive/files/data.csv"),
         TensorBoard(),
+        reduce_lr = ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=5, min_lr=1e-6, verbose=1),
         EarlyStopping(monitor='val_loss', patience=50, restore_best_weights=False)
     ]  
 
