@@ -5,7 +5,7 @@ from glob import glob
 import cv2
 import tensorflow as tf
 from tensorflow.keras.callbacks import *
-from data import load_data,tf_dataset
+from train import *
 from model import build_model
 from tensorflow.keras.metrics import *
 from tensorflow.keras.utils import CustomObjectScope
@@ -66,7 +66,7 @@ if __name__=='__main__':
     model = load_model_weight("/content/drive/MyDrive/files/model.h5")
 
 
-    model.compile(loss=dice_loss, optimizer=optimizer=Nadam(lr), metrics=['acc',Recall(),Precision(),iou])
+    model.compile(loss=dice_loss, optimizer=Nadam(lr), metrics=['acc',Recall(),Precision(),iou])
 
     model.fit(train_dataset,
         validation_data=valid_dataset,
