@@ -66,7 +66,7 @@ if __name__=='__main__':
     model = load_model_weight("/content/drive/MyDrive/files/model.h5")
 
 
-    model.compile(loss=dice_loss, optimizer=Nadam(lr), metrics=['acc',Recall(),Precision(),iou])
+    model.compile(loss=dice_loss, optimizer=Nadam(lr), metrics=metrics)
 
     model.fit(train_dataset,
         validation_data=valid_dataset,
